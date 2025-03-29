@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Notifications\Notifiable;
 
 class Gender extends Model
 {
-    use hasfactory, Notifiable;
+    use Hasfactory, Notifiable;
 
     protected $table = 'tbl_genders';
     protected $primaryKey = 'gender_id';

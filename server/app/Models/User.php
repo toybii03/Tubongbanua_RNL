@@ -6,14 +6,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-   protected $table = 'tbl_users';
-   protected $primaryKey = 'user_id';
-   protected $fillable = [
+    protected $table = 'tbl_users';
+    protected $primaryKey = 'user_id';
+    protected $fillable = [
         'first_name',
         'middle_name',
         'last_name',
@@ -24,12 +25,13 @@ class User extends Authenticatable
         'contact_number',
         'email',
         'password',
-   ];
+    ];
     protected $hidden = [
         'password',
     ];
 
-    public function gender(): BelongsTo {
-        return $this->belongsTo(Gender::class, 'gender_id', 'gender_id' );
+    public function gender(): BelongsTo
+    {
+        return $this->belongsTo(Gender::class, 'gender_id', 'gender_id');
     }
 }
