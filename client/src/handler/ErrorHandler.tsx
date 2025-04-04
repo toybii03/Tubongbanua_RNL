@@ -9,7 +9,7 @@ const ErrorHandler = (
       navigate("/");
     }
   } else {
-    console.error("Unexpected server error:", error);
+    console.error("Unexpected server error: ", error);
   }
 };
 

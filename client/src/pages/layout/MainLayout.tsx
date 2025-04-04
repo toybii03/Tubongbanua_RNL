@@ -9,7 +9,6 @@ const MainLayout = ({ content }: MainLayoutProps) => {
     <>
       <div className="container-fluid">
         <Navbar />
-
         <div>{content}</div>
       </div>
     </>

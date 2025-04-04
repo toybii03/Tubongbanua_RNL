@@ -1,18 +1,18 @@
 import { useEffect } from "react";
 
-interface ALertMessageProps {
+interface AlertMessageProps {
   message: string;
   isSuccess: boolean;
   isVisible: boolean;
   onClose: () => void;
 }
 
-const ALertMessage = ({
+const AlertMessage = ({
   message,
   isSuccess,
   isVisible,
   onClose,
-}: ALertMessageProps) => {
+}: AlertMessageProps) => {
   useEffect(() => {
     if (isVisible) {
       const timer = setTimeout(() => {
@@ -22,6 +22,7 @@ const ALertMessage = ({
       return () => clearTimeout(timer);
     }
   }, [isVisible, onClose]);
+
   return (
     <>
       <div
@@ -36,4 +37,4 @@ const ALertMessage = ({
   );
 };
 
-export default ALertMessage;
+export default AlertMessage;
