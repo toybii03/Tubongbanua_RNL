@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Genders from "./pages/gender/Genders";
 import EditGender from "./pages/gender/EditGender";
 import DeleteGender from "./pages/gender/DeleteGender";
-import Users from "./pages/user/Users";
+import Users from "./pages/layout/user/Users";
 
 const router = createBrowserRouter([
   {
