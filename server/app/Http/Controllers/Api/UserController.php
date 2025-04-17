@@ -90,4 +90,15 @@ class UserController extends Controller
             'message' => 'User Successfully Updated.'
         ], 200);
     }
+
+    public function destroyUser(User $user)
+    {
+        $user->update([
+            'is_deleted' => true
+        ]);
+
+        return response()->json([
+            'message' => 'User Successfully Deleted.'
+        ], 200);
+    }
 }
