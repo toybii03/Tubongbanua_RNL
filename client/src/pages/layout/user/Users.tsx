@@ -49,7 +49,7 @@ const Users = () => {
       <DeleteUserModal
         showModal={openDeleteUserModal}
         user={selectedUser}
-        onRefreshUsers={() => setRefreshUsers(refreshUsers)}
+        onRefreshUsers={() => setRefreshUsers(!refreshUsers)}
         onClose={handleCloseDeleteUserModal}
       />
       <div className="d-flex justify-content-end mt-2">
