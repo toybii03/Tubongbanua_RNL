@@ -4,6 +4,7 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import { LoginFieldErrors } from "../../../interfaces/LoginFieldErrors";
 import ErrorHandler from "../../../handler/ErrorHandler";
 import SpinnerSmall from "../../SpinnerSmall";
+import AlertMessage from "../../AlertMessage";
 
 const LoginForm = () => {
   const { login } = useAuth();
@@ -15,6 +16,10 @@ const LoginForm = () => {
     password: "",
     errors: {} as LoginFieldErrors,
   });
+
+  const [message, setMessage] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -44,10 +49,7 @@ const LoginForm = () => {
             errors: error.response.data.errors,
           }));
         } else if (error.response.status === 401) {
-          setState((prevState) => ({
-            ...prevState,
-            errors: { general: error.response.data.message },
-          }));
+          handleShowAlertMessage(error.response.data.message, false, true);
         } else {
           ErrorHandler(error, null);
         }
@@ -60,8 +62,30 @@ const LoginForm = () => {
       });
   };
 
+  const handleShowAlertMessage = (
+    message: string,
+    isSuccess: boolean,
+    isVisible: boolean
+  ) => {
+    setMessage(message);
+    setIsSuccess(isSuccess);
+    setIsVisible(isVisible);
+  };
+
+  const handleCloseAlertMessage = () => {
+    setMessage("");
+    setIsSuccess(false);
+    setIsVisible(false);
+  };
+
   return (
     <>
+      <AlertMessage
+        message={message}
+        isSuccess={isSuccess}
+        isVisible={isVisible}
+        onClose={handleCloseAlertMessage}
+      />
       <form onSubmit={handleLogin}>
         <div className="mb-3">
           <label htmlFor="email">Email</label>

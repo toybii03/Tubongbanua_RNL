@@ -28,6 +28,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setUser(user);
 
     localStorage.setItem("token", token);
+    localStorage.setItem("user", JSON.stringify(user));
+
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   };
 
@@ -37,6 +39,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setUser(null);
 
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
     delete axios.defaults.headers.common["Authorization"];
   };
 
