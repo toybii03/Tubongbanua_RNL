@@ -105,7 +105,7 @@ const LoginForm = () => {
         <div className="mb-3">
           <label htmlFor="password">Password</label>
           <input
-            type="text"
+            type="password"
             className={`form-control ${
               state.errors.password ? "is-invalid" : ""
             }`}
